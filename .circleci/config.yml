@@ -66,6 +66,16 @@ jobs:
             echo "Install, build, deploy in both apps"
             npm run deploy
 
+machine:
+  enabled: true
+  services:
+    - docker
+
+  steps:
+    - add_ssh_keys:
+        fingerprints:
+          - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDChx2mlL0wtmHBaPYAhEkEeq+AWVuwflUiELVsDFIvgwDLatiOPgHEbblj6zX9Xw6scTFEk3m3p62Vys1lhMQETbp5rX7J7Tzy/gcwZXDutsHcxTWpUc73wuEXcGFeeTq6uaQgimNIc0s9br5hiay5ZV0n3P3zPC26VWTUw8J6R6vK/E875XENSNp9hhp5tbevG1yFjeJhSwlu38LWmlOpGbazc7HWk98Sm+dKCM/lTpDEc6zUgThwDGML6hqUnQ3a+ysrLmNtdfIHg9vKhMY7vxZ60bttvKNKuejqkh+6CGvxixK1thUiAqCldmC3VxzO+TI8FuzsCcFJKeXUnga7"
+
 workflows:
   udagram:
     jobs:
