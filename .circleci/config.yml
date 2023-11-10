@@ -9,11 +9,10 @@ jobs:
   build:
     docker:
       # the base image can run most needed actions with orbs
-      - image: 'cimg/node:14.15'
-    steps:
+      - image: "cimg/node:14.15"
       # install node and checkout code
       - node/install:
-          node-version: '14.15'
+          node-version: "14.15"
       - checkout
       # Use root level package.json to install dependencies in the frontend app
       - run:
@@ -51,11 +50,11 @@ jobs:
   # deploy step will run only after manual approval
   deploy:
     docker:
-      - image: 'cimg/base:stable'
+      - image: "cimg/base:stable"
       # more setup needed for aws, node, elastic beanstalk
     steps:
       - node/install:
-          node-version: '14.15'
+          node-version: "14.15"
       - eb/setup
       - aws-cli/setup
       - checkout
@@ -65,6 +64,55 @@ jobs:
           command: |
             echo "Install, build, deploy in both apps"
             npm run deploy
+
+machine:
+  enabled: true
+  services:
+    - docker
+
+  steps:
+    - add_ssh_keys:
+        fingerprints:
+          - "-----BEGIN OPENSSH PRIVATE KEY-----
+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
+yqITZ8gwypOwjGDciNzqidrgY8o=
+-----END OPENSSH PRIVATE KEY-----
+"
 
 workflows:
   udagram:
