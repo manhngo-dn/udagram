@@ -11,9 +11,6 @@ jobs:
       # the base image can run most needed actions with orbs
       - image: "cimg/node:14.15"
     steps:
-    - add_ssh_keys:
-        fingerprints:
-          - "SHA256:Hjyx4N9xRJyeR1tXgA6RNeMjPzyDpJK8o68JCZQeyec"
       # install node and checkout code
       - node/install:
           node-version: "14.15"
